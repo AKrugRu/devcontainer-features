@@ -7,7 +7,9 @@
 
 ```json
 "features": {
-    "ghcr.io/AKrugRu/ai-agent-to-devcontainer/opencode:0": {}
+    "ghcr.io/akrugru/devcontainer-features/opencode:0": {
+        "version": "latest"
+    }
 }
 ```
 

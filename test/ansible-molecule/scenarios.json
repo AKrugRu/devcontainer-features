@@ -1,0 +1,26 @@
+{
+  "install_latest_version": {
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/python:1": {
+        "toolsToInstall": "pip"
+      },
+      "ansible-molecule": {
+        "ansible_version": "latest",
+        "molecule_version": "latest"
+      }
+    }
+  },
+  "install_specific_version": {
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/python:1": {
+        "toolsToInstall": "pip"
+      },
+      "ansible-molecule": {
+        "ansible_version": "14.2.0",
+        "molecule_version": "26.6.0"
+      }
+    }
+  }
+}

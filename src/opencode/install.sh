@@ -16,21 +16,6 @@ install_opencode() {
     fi
 }
 
-# Print error message about requiring Node.js feature
-print_nodejs_requirement() {
-    cat <<EOF
-
-ERROR: Node.js and npm are required but could not be installed!
-Please add the Node.js feature to your devcontainer.json:
-
-  "features": {
-    "ghcr.io/devcontainers/features/node:latest": {}
-  }
-
-EOF
-    exit 1
-}
-
 # Main script starts here
 main() {
     echo "Activating feature 'opencode'"
@@ -38,7 +23,6 @@ main() {
     # Check node
     if ! command -v node >/dev/null || ! command -v npm >/dev/null; then
         echo "Node.js or npm not found"
-        print_nodejs_requirement
     fi
 
     # Install opencode

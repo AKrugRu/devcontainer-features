@@ -1,0 +1,30 @@
+{
+    "name": "Install ansible and molecule to devcontainer",
+    "id": "ansible",
+    "version": "0.0.1",
+    "description": "Добавляем в devcontainer ansible и molecule",
+    "options": {
+        "ansible_version": {
+            "type": "string",
+            "proposals": ["14.2.0", "latest"],
+            "default": "latest",
+            "description": "Укажите версию для установки"
+        },
+        "molecule_version": {
+            "type": "string",
+            "proposals": ["26.6.0", "latest"],
+            "default": "latest",
+            "description": "Укажите версию для установки"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/python"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "redhat.ansible"
+            ]
+        }
+    }
+}

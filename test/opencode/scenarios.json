@@ -5,7 +5,7 @@
       "ghcr.io/devcontainers/features/common-utils:1": {
         "configureZshAsDefaultShell": false
       },
-      "ghcr.io/devcontainers/features/node:1": {},
+      "ghcr.io/devcontainers/features/node:2": {},
       "opencode": {
         "version": "latest"
       }
@@ -17,7 +17,7 @@
       "ghcr.io/devcontainers/features/common-utils:1": {
         "configureZshAsDefaultShell": false
       },
-      "ghcr.io/devcontainers/features/node:1": {},
+      "ghcr.io/devcontainers/features/node:2": {},
       "opencode": {
         "version": "1.18.1"
       }

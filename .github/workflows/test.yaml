@@ -34,6 +34,7 @@ jobs:
       matrix:
         features:
           - opencode
+          - ansible-molecule
     steps:
       - uses: actions/checkout@v4
 
