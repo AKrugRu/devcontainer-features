@@ -1,6 +1,6 @@
 {
     "name": "Install ansible and molecule to devcontainer",
-    "id": "ansible",
+    "id": "ansible-molecule",
     "version": "0.0.1",
     "description": "Добавляем в devcontainer ansible и molecule",
     "options": {
