@@ -9,13 +9,6 @@
 "features": {
     "ghcr.io/AKrugRu/devcontainer-features/opencode:1": {}
 }
-
-//монтируем volume для сохранения настроек
-	"mounts": [
-		"source=opencode-config,target=/home/vscode/.config/opencode/,type=volume",
-		"source=opencode-local-shared,target=/home/vscode/.local/share/opencode,type=volume",
-		"source=opencode-local-state,target=/home/vscode/.local/state/opencode,type=volume"
-	],
 ```
 
 ## Options
@@ -29,7 +22,6 @@
 ### VS Code Extensions
 
 - `sst-dev.opencode`
-
 
 
 
