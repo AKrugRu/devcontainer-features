@@ -9,7 +9,6 @@
 "features": {
     "ghcr.io/AKrugRu/devcontainer-features/opencode:1": {}
 }
-
 ```
 
 ## Options
@@ -23,7 +22,6 @@
 ### VS Code Extensions
 
 - `sst-dev.opencode`
-
 
 
 
