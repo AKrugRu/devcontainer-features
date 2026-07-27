@@ -35,6 +35,7 @@ jobs:
         features:
           - opencode
           - ansible-molecule
+          - pi-dev
     steps:
       - uses: actions/checkout@v4
 
