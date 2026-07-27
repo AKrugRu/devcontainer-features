@@ -10,10 +10,6 @@
     "ghcr.io/AKrugRu/devcontainer-features/pi-dev:1": {}
 }
 
-//монтируем volume для сохранения настроек
-	"mounts": [
-		"source=pi-config,target=/home/vscode/.pi/agent,type=volume"
-	],
 ```
 
 ## Options

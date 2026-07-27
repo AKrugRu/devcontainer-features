@@ -1,7 +1,7 @@
 {
     "name": "Add pi.dev agent to devcontainer",
     "id": "pi-dev",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Добавляем в devcontainer агента pi.dev",
     "options": {
         "version": {
@@ -13,5 +13,13 @@
     },
     "installsAfter": [
         "ghcr.io/devcontainers/features/node"
-    ]
+    ],
+    "mounts": [
+        {
+        "source": "pi-config",
+        "target": "/home/vscode/.pi/agent",
+        "type": "volume"
+        }
+    ],
+    "onCreateCommand": "sudo chown 1000:1000 -R /home/vscode/.pi/agent"
 }
