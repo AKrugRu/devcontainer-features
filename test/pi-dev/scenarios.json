@@ -1,0 +1,26 @@
+{
+  "install_latest_version": {
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils:1": {
+        "configureZshAsDefaultShell": false
+      },
+      "ghcr.io/devcontainers/features/node:2": {},
+      "pi-dev": {
+        "version": "latest"
+      }
+    }
+  },
+  "install_specific_version": {
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/common-utils:1": {
+        "configureZshAsDefaultShell": false
+      },
+      "ghcr.io/devcontainers/features/node:2": {},
+      "pi-dev": {
+        "version": "0.82.1"
+      }
+    }
+  }
+}

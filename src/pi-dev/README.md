@@ -1,0 +1,27 @@
+
+# Add pi.dev agent to devcontainer
+
+Добавляем в devcontainer агента pi.dev
+
+## Example Usage
+
+```json
+"features": {
+    "ghcr.io/AKrugRu/devcontainer-features/pi-dev:1": {}
+}
+
+//монтируем volume для сохранения настроек
+	"mounts": [
+		"source=pi-config,target=/home/vscode/.pi/agent,type=volume"
+	],
+```
+
+## Options
+
+| Options Id | Description | Type | Default Value |
+|-----|-----|-----|-----|
+| version | Укажите версию для установки | string | latest |
+
+---
+
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/AKrugRu/devcontainer-features/blob/main/src/pi/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._

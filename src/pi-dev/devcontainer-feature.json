@@ -1,0 +1,17 @@
+{
+    "name": "Add pi.dev agent to devcontainer",
+    "id": "pi-dev",
+    "version": "1.0.0",
+    "description": "Добавляем в devcontainer агента pi.dev",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": ["0.82.1", "latest"],
+            "default": "latest",
+            "description": "Укажите версию для установки"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/node"
+    ]
+}
