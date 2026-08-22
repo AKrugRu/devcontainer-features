@@ -31,9 +31,11 @@ install_molecule() {
     if [ "$MOLECULE_VERSION" = "latest" ]; then
         sudo -H -u "$_REMOTE_USER" pip install ansible-lint --user --break-system-packages
         sudo -H -u "$_REMOTE_USER" pip install molecule --user --break-system-packages
+        sudo -H -u "$_REMOTE_USER" pip install proxmoxer requests --break-system-packages
     else
         sudo -H -u "$_REMOTE_USER" pip install ansible-lint=="${MOLECULE_VERSION}" --user --break-system-packages
         sudo -H -u "$_REMOTE_USER" pip install molecule=="${MOLECULE_VERSION}" --user --break-system-packages
+        sudo -H -u "$_REMOTE_USER" pip install proxmoxer requests --break-system-packages
     fi
     
 
