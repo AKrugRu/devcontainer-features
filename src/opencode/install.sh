@@ -22,7 +22,8 @@ main() {
 
     # Check node
     if ! command -v node >/dev/null || ! command -v npm >/dev/null; then
-        echo "Node.js or npm not found"
+        echo "ERROR: Node.js or npm not found. Ensure the 'node' feature is installed."
+        exit 1
     fi
 
     # Install opencode

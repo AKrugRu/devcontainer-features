@@ -16,10 +16,10 @@
     ],
     "mounts": [
         {
-        "source": "pi-config",
-        "target": "/home/vscode/.pi/agent",
-        "type": "volume"
+            "source": "pi-config",
+            "target": "/home/vscode/.pi/agent",
+            "type": "volume"
         }
     ],
-    "onCreateCommand": "sudo chown 1000:1000 -R /home/vscode/.pi/agent"
+    "onCreateCommand": "sudo chown -R \"$(id -u):$(id -g)\" /home/vscode/.pi/agent"
 }

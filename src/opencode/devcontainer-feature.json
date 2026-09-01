@@ -21,12 +21,12 @@
             ]
         }
     },
-	"mounts": [
+    "mounts": [
         {
-        "source": "opencode-config",
-        "target": "/home/vscode/.config/opencode",
-        "type": "volume"
+            "source": "opencode-config",
+            "target": "/home/vscode/.config/opencode",
+            "type": "volume"
         }
     ],
-    "onCreateCommand": "sudo chown 1000:1000 -R /home/vscode/.config/opencode"
+    "onCreateCommand": "sudo chown -R \"$(id -u):$(id -g)\" /home/vscode/.config/opencode"
 }

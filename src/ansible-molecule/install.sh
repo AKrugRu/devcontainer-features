@@ -28,12 +28,12 @@ install_ansible() {
 install_molecule() {
     echo "Installing ansible-lint and molecule for user: $_REMOTE_USER"
 
+    sudo -H -u "$_REMOTE_USER" pip install ansible-lint --user --break-system-packages
+
     if [ "$MOLECULE_VERSION" = "latest" ]; then
-        sudo -H -u "$_REMOTE_USER" pip install ansible-lint --user --break-system-packages
         sudo -H -u "$_REMOTE_USER" pip install molecule --user --break-system-packages
         sudo -H -u "$_REMOTE_USER" pip install proxmoxer requests --break-system-packages
     else
-        sudo -H -u "$_REMOTE_USER" pip install ansible-lint=="${MOLECULE_VERSION}" --user --break-system-packages
         sudo -H -u "$_REMOTE_USER" pip install molecule=="${MOLECULE_VERSION}" --user --break-system-packages
         sudo -H -u "$_REMOTE_USER" pip install proxmoxer requests --break-system-packages
     fi
@@ -53,9 +53,10 @@ install_molecule() {
 main() {
     echo "Activating feature 'ansible-molecule'"
 
-    # Check node
+    # Check pip
     if ! command -v pip >/dev/null; then
-        echo "pip not found"
+        echo "ERROR: pip not found. Ensure the 'python' feature is installed."
+        exit 1
     fi
 
     # Install ansible
