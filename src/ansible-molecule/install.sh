@@ -1,16 +1,27 @@
 #!/bin/sh
 set -eu
 
-install_ansible() { 
+ensure_pip() {
+    if ! command -v python3 >/dev/null 2>&1; then
+        echo "ERROR: python3 not found. Ensure the 'python' feature is installed."
+        exit 1
+    fi
+    if ! python3 -m pip --version >/dev/null 2>&1; then
+        echo "ERROR: python3 -m pip not found. Ensure the 'python' feature is installed with toolsToInstall: \"pip\"."
+        exit 1
+    fi
+}
+
+install_ansible() {
     echo "Installing ansible for user: $_REMOTE_USER"
 
     # 2. Вызываем pip от имени целевого пользователя.
-    # Флаг -H (или --set-home) критически важен, чтобы pip понимал, 
+    # Флаг -H (или --set-home) критически важен, чтобы pip понимал,
     # что домашняя директория изменилась на /home/_REMOTE_USER
     if [ "$ANSIBLE_VERSION" = "latest" ]; then
-        sudo -H -u "$_REMOTE_USER" pip install ansible --user --break-system-packages
+        sudo -H -u "$_REMOTE_USER" python3 -m pip install ansible --user --break-system-packages
     else
-        sudo -H -u "$_REMOTE_USER" pip install ansible=="${ANSIBLE_VERSION}" --user --break-system-packages
+        sudo -H -u "$_REMOTE_USER" python3 -m pip install "ansible==${ANSIBLE_VERSION}" --user --break-system-packages
     fi
 
     # 3. Проверяем, доступна ли команда ansible для этого пользователя.
@@ -28,16 +39,16 @@ install_ansible() {
 install_molecule() {
     echo "Installing ansible-lint and molecule for user: $_REMOTE_USER"
 
-    sudo -H -u "$_REMOTE_USER" pip install ansible-lint --user --break-system-packages
+    sudo -H -u "$_REMOTE_USER" python3 -m pip install ansible-lint --user --break-system-packages
 
     if [ "$MOLECULE_VERSION" = "latest" ]; then
-        sudo -H -u "$_REMOTE_USER" pip install molecule --user --break-system-packages
-        sudo -H -u "$_REMOTE_USER" pip install proxmoxer requests --break-system-packages
+        sudo -H -u "$_REMOTE_USER" python3 -m pip install molecule --user --break-system-packages
+        sudo -H -u "$_REMOTE_USER" python3 -m pip install proxmoxer requests --break-system-packages
     else
-        sudo -H -u "$_REMOTE_USER" pip install molecule=="${MOLECULE_VERSION}" --user --break-system-packages
-        sudo -H -u "$_REMOTE_USER" pip install proxmoxer requests --break-system-packages
+        sudo -H -u "$_REMOTE_USER" python3 -m pip install "molecule==${MOLECULE_VERSION}" --user --break-system-packages
+        sudo -H -u "$_REMOTE_USER" python3 -m pip install proxmoxer requests --break-system-packages
     fi
-    
+
 
     if sudo -i -u "$_REMOTE_USER" command -v molecule >/dev/null; then
         echo "molecule installed successfully!"
@@ -53,11 +64,7 @@ install_molecule() {
 main() {
     echo "Activating feature 'ansible-molecule'"
 
-    # Check pip
-    if ! command -v pip >/dev/null; then
-        echo "ERROR: pip not found. Ensure the 'python' feature is installed."
-        exit 1
-    fi
+    ensure_pip
 
     # Install ansible
     install_ansible || exit 1

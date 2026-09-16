@@ -1,7 +1,7 @@
 {
     "name": "Add opencode to devcontainer",
     "id": "opencode",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Добавляем в devcontainer агента opencode последней версии",
     "options": {
         "version": {
@@ -24,9 +24,9 @@
     "mounts": [
         {
             "source": "opencode-config",
-            "target": "/home/vscode/.config/opencode",
+            "target": "$_REMOTE_USER_HOME/.config/opencode",
             "type": "volume"
         }
     ],
-    "onCreateCommand": "sudo chown -R \"$(id -u):$(id -g)\" /home/vscode/.config/opencode"
+    "onCreateCommand": "sudo chown -R \"$(id -u):$(id -g)\" \"$_REMOTE_USER_HOME/.config/opencode\""
 }
